@@ -1,6 +1,7 @@
-import pool from "../config/db.config";
+import pool from "../config/db.config.js";
 import { hash, compare } from "bcrypt";
-import { sign } from "jsonwebtoken";
+import pkg from "jsonwebtoken";
+const { sign } = pkg;
 
 export const register = async (req, res) => {
   const { email, password, name, age, gender, phoneNumber, universityEnrollmentId, pgAddress } = req.body;

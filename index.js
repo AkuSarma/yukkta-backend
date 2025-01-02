@@ -1,7 +1,7 @@
 import express, { json } from "express";
 import { config } from "dotenv";
-import userRoutes from "./routes/user.routes";
-import pool from "./config/db.config";
+import userRoutes from "./routes/user.routes.js";
+import pool from "./config/db.config.js";
 
 config();
 
