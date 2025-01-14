@@ -1,6 +1,7 @@
 import express, { json } from "express";
 import { config } from "dotenv";
 import userRoutes from "./routes/user.routes.js";
+import medicineOrderRoutes from "./routes/medicineOrder.routes.js";
 import pool from "./config/db.config.js";
 
 config();
@@ -20,7 +21,10 @@ pool.connect((err) => {
 });
 
 // Routes
+// user
 app.use("/api/auth", userRoutes);
+// medicine order
+app.use("/api/medicine-order", medicineOrderRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

@@ -34,6 +34,25 @@ const createUsersTable = async () => {
   }
 };
 
+const createPrescriptionsTable = async () => {
+  const query = `
+    CREATE TABLE IF NOT EXISTS prescriptions (
+      id SERIAL PRIMARY KEY,
+      user_id INT REFERENCES users(id),
+      file_name VARCHAR(255) NOT NULL,
+      file_path TEXT NOT NULL,
+      upload_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+  `;
+  try {
+    await pool.query(query);
+    console.log("Prescriptions table created or already exists.");
+  } catch (err) {
+    console.error("Error creating prescriptions table:", err);
+  }
+};
+
 createUsersTable();
+createPrescriptionsTable();
 
 export default pool;
