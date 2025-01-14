@@ -1,6 +1,6 @@
 import { Router } from 'express';
 const router = Router();
-import { uploadPrescription, checkPrescriptions } from '../controllers/medicineOrder.controller';
+import { uploadPrescription, checkPrescriptions } from '../controllers/medicineOrder.controller.js';
 
 
 // Route for user to upload prescription
