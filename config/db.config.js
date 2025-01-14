@@ -52,7 +52,25 @@ const createPrescriptionsTable = async () => {
   }
 };
 
+const createConsultationsTable = async () => {
+  const query = `
+    CREATE TABLE IF NOT EXISTS consultations (
+      id SERIAL PRIMARY KEY,
+      user_id INT REFERENCES users(id),
+      difficulty TEXT NOT NULL,
+      request_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+  `;
+  try {
+    await pool.query(query);
+    console.log("Consultations table created or already exists.");
+  } catch (err) {
+    console.error("Error creating consultations table:", err);
+  }
+};
+
 createUsersTable();
 createPrescriptionsTable();
+createConsultationsTable();
 
 export default pool;
